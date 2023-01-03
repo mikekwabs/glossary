@@ -1,36 +1,41 @@
 ---
-title: Stateless Apps
-status: Feedback Appreciated
-category: technology
-tags: ["fundamental", "application", ""]
+title: Stateless Apps 
+status: Completed
+category: concept
+tags: ["fundamental","application", ""]
 ---
 
 ## What it is
+We must first understand what a state is in order to comprehend what it means to be stateless. 
+The status quo or present state of an application at a particular time is described by its state.
+A stateless application is one that does not retain records of previously carried out transactions or processes. 
+As a result, it is clear that each process is done independently. 
 
-A stateless application doesn’t save any client session (state) data on the server where the application lives. 
-Each session is carried out as if it was the first time and responses are not dependent upon data from a previous session and 
-provides functionality to use print services, CDN (Content Delivery Network) or the Web Servers 
-in order to process every short-term request. 
-For example, someone is searching a question in the search engine and pressed the Enter button. 
-In case if the searching operation gets interrupted or closed due to some reason, 
-you have to start a new one as there is no saved data for your previous request.
 
 ## Problem it addresses
+Stateless applications address the issue of non-dependency.
+When applications do not have to keep track of previous knowledge
+then they can perform their operations in isolation. 
+A stateful app, for instance, mandates that the server log
+the attempt to request a banking web page from the user
+as well as any subsequent activity. 
+Because the entire process is contained within a single session,
+every step or operation must be redone
+in the event of a network failure in order to continue where the user left off.
+A stateless app, in contrast to stateful ones, 
+makes use of authentication tokens
+rather than keeping account of each action the user takes on the web page.
+By using authentication tokens, 
+the client and server communication is not reliant on a single session.
 
-Stateless applications tackle the problem of resiliency, 
-because different pods across a [cluster](/cluster/) can work independently, 
-with multiple requests coming to them at the same time. 
-If there’s a problem, you can easily restart the application, 
-and it will return to its initial state with little or no downtime. 
-As such, the benefits of stateless applications include resiliency, elasticity, and high availability. 
-However, most applications we use today are at least partly [stateful](/stateful-apps/), 
-as they store things like preferences and settings to improve the user experience.
 
 ## How it helps
+Horizontal scalability—the process of adding extra physical machines to your infrastructure 
+to handle growing demand—is made possible by
+the fact that applications can carry out their functions independently.
+This is so that, in the event of a server failure, 
+the components of a stateless program can be redeployed to another server.
+Additionally, since the programs are running independently, 
+an Application Programming Interface, or API, 
+can be developed to connect the independently running components.
 
-Boiling everything down, in a Stateless Application the only thing your cluster is responsible for is 
-the code, and other static content, being hosted on it. 
-That’s it, no changing databases, no writes and no left over files when the pod is deleted. 
-Stateless [containers](/container/) are easier to deploy, 
-and you don’t need to worry about saving container data on persistent storage volumes. 
-You also don't have to worry about backing up the data.
